@@ -1,0 +1,12 @@
+---
+- name: Configure docker-composer
+  hosts: docker
+  roles:
+    - role: docker-compose
+      when: ansible_env.SERVICE_DOCKER_COMPOSE_ENABLE is defined and ansible_env.SERVICE_DOCKER_COMPOSE_ENABLE == "true"
+
+- name: Configure docker
+  hosts: docker
+  roles:
+    - role: docker
+      when: ansible_env.SERVICE_DOCKER_ENABLE is defined and ansible_env.SERVICE_DOCKER_ENABLE == "true"

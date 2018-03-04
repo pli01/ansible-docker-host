@@ -1,0 +1,4 @@
+- src: https://github.com/pli01/ansible-role-docker-compose/archive/master.tar.gz
+  name: docker-compose
+- src: https://github.com/pli01/ansible-role-docker/archive/master.tar.gz
+  name: docker

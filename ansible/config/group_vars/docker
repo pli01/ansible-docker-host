@@ -1,0 +1,4 @@
+docker_http_proxy: http://127.0.0.1:8888
+docker_https_proxy: http://127.0.0.1:8888
+docker_no_proxy_params: localhost,127.0.0.1
+docker_compose_install_method: curl
