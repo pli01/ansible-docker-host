@@ -1,7 +1,13 @@
+- src: https://github.com/pli01/ansible-role-ntp/archive/master.tar.gz
+  name: ntp
 - src: https://github.com/pli01/ansible-role-docker-compose/archive/master.tar.gz
   name: docker-compose
 - src: https://github.com/pli01/ansible-role-docker/archive/master.tar.gz
   name: docker
+
+#- src: https://github.com/pli01/ansible-role-ntp
+#  version: master
+#  name: ntp
 #- src: https://github.com/pli01/ansible-role-docker-compose
 #  version: master
 #  name: docker-compose

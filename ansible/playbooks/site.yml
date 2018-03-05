@@ -1,12 +1,21 @@
 ---
+- name: Configure ntp
+  hosts: docker
+  roles:
+    - role: ntp
+      become: true
+      when:
+        - ansible_env.SERVICE_NTP_ENABLE is defined
+        - ansible_env.SERVICE_NTP_ENABLE == "true"
+
 - name: Configure docker-composer
   hosts: docker
   roles:
     - role: docker-compose
       become: true
       when:
-       - ansible_env.SERVICE_DOCKER_COMPOSE_ENABLE is defined
-       - ansible_env.SERVICE_DOCKER_COMPOSE_ENABLE == "true"
+        - ansible_env.SERVICE_DOCKER_COMPOSE_ENABLE is defined
+        - ansible_env.SERVICE_DOCKER_COMPOSE_ENABLE == "true"
 
 - name: Configure docker
   hosts: docker
