@@ -8,7 +8,7 @@
         - ansible_env.SERVICE_NTP_ENABLE is defined
         - ansible_env.SERVICE_NTP_ENABLE == "true"
 
-- name: Configure docker-composer
+- name: Configure docker-compose
   hosts: docker
   roles:
     - role: docker-compose
