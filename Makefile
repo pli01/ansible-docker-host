@@ -14,7 +14,7 @@ clean:
 .PHONY: test
 build:
 	@echo '# $@ STARTING'
-	bash build.sh $(PACKAGENAME) $(VERSION)
+	bash build.sh $(PACKAGENAME) $(VERSION) ANSIBLE_GALAXY_FORCE="-f"
 	@echo '# $@ SUCCESS'
 
 test: build unit-test
