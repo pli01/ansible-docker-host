@@ -1,5 +1,7 @@
 - src: https://github.com/pli01/ansible-role-ntp/archive/master.tar.gz
   name: ntp
+- src: https://github.com/pli01/ansible-role-tinyproxy/archive/master.tar.gz
+  name: tinyproxy
 - src: https://github.com/pli01/ansible-role-docker-compose/archive/master.tar.gz
   name: docker-compose
 - src: https://github.com/pli01/ansible-role-docker/archive/master.tar.gz

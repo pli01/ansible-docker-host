@@ -1,3 +1,8 @@
+### ntp
+#ntp_config_server:
+#  - "192.168.1.1"
+#  - "192.168.1.2"
+### docker
 docker_http_proxy: "{{ ansible_env.http_proxy | default(None) }}"
 docker_https_proxy: "{{ ansible_env.https_proxy  | default(None)}}"
 docker_no_proxy_params: "{{ ansible_env.no_proxy | default(None) }}"
@@ -13,9 +18,6 @@ proxy_env:
 #docker_compose_pip_extra_args: -i http://nexus/nexus/repository/pypi/simple --trusted-host nexus
 #docker_compose_curl_url: 'http://nexus/nexus/repository/docker-compose/download/{{ docker_compose_version }}/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}'
 #
-#ntp_config_server:
-#  - "192.168.1.1"
-#  - "192.168.1.2"
 #docker_config:
 #  mtu: 1450
 #  data-root: /DATA/docker
@@ -31,3 +33,14 @@ proxy_env:
 #  - http://nexus
 #docker_users:
 #  - deploy-user
+#
+### tinyproxy
+#tinyproxy_no_upstream:
+#  - ".internal.example.com"
+#  - "www.example.com"
+#tinyproxy_upstream:
+#  - 'cust1_firewall:8008 "testbed_for_cust1"'
+#  - 'firewall.internal.example.com:80'
+#tinyproxy_header:
+#  - { name: "Proxy-Authorization", value: "Basic 0tsp98==" }
+
