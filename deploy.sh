@@ -9,6 +9,6 @@ export SERVICE_DOCKER_ENABLE=${SERVICE_DOCKER_ENABLE:-true}
 
 echo "Configuration started"
 time ( cd $(dirname $0)/ansible &&
-  ansible-playbook -i config -c local -l localhost \
+  ansible-playbook -i config -c local -l $(hostname -s) \
      playbooks/site.yml -v
 )
