@@ -1,0 +1,18 @@
+language: python
+python: '2.7'
+sudo: required
+
+services:
+  - docker
+
+before_install:
+- docker-compose --version
+- sudo apt-get update -qq
+- sudo apt-get install -qq python-apt python-pycurl make
+
+install:
+- pip install ansible ansible-lint
+- ansible --version
+
+script:
+- make test
