@@ -8,6 +8,15 @@
         - ansible_env.SERVICE_NTP_ENABLE is defined
         - ansible_env.SERVICE_NTP_ENABLE == "true"
 
+- name: Configure rsyslog
+  hosts: docker
+  roles:
+    - role: rsyslog
+      become: true
+      when:
+        - ansible_env.SERVICE_RSYSLOG_ENABLE is defined
+        - ansible_env.SERVICE_RSYSLOG_ENABLE == "true"
+
 - name: Configure tinyproxy
   hosts: docker
   roles:

@@ -2,6 +2,13 @@
 #ntp_config_server:
 #  - "192.168.1.1"
 #  - "192.168.1.2"
+### rsyslog
+#
+#rsyslog_templates: []
+#  - { src: journald-json.conf, dest: 01-journald-json.conf }
+#  - { src: forward-elk.conf, dest: 99-forward-elk.conf }
+#rsyslog_forward_elk: 'elasticsearch:514'
+#
 ### docker
 docker_http_proxy: "{{ ansible_env.http_proxy | default(None) }}"
 docker_https_proxy: "{{ ansible_env.https_proxy  | default(None)}}"

@@ -2,6 +2,8 @@
   name: ntp
 - src: https://github.com/pli01/ansible-role-tinyproxy/archive/master.tar.gz
   name: tinyproxy
+- src: https://github.com/pli01/ansible-role-rsyslog/archive/master.tar.gz
+  name: rsyslog
 - src: https://github.com/pli01/ansible-role-docker-compose/archive/master.tar.gz
   name: docker-compose
 - src: https://github.com/pli01/ansible-role-docker/archive/master.tar.gz
@@ -10,6 +12,9 @@
 #- src: https://github.com/pli01/ansible-role-ntp
 #  version: master
 #  name: ntp
+#- src: https://github.com/pli01/ansible-role-rsyslog
+#  version: master
+#  name: rsyslog
 #- src: https://github.com/pli01/ansible-role-docker-compose
 #  version: master
 #  name: docker-compose
