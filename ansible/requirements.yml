@@ -8,6 +8,8 @@
   name: docker-compose
 - src: https://github.com/pli01/ansible-role-docker/archive/master.tar.gz
   name: docker
+- src: https://github.com/pli01/ansible-role-openstack-client/archive/master.tar.gz
+  name: openstack-client
 
 #- src: https://github.com/pli01/ansible-role-ntp
 #  version: master
@@ -21,3 +23,6 @@
 #- src: https://github.com/pli01/ansible-role-docker
 #  version: master
 #  name: docker
+#- src: https://github.com/pli01/ansible-role-openstack-client
+#  version: master
+#  name: openstack-client

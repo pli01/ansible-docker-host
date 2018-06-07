@@ -26,6 +26,15 @@
         - ansible_env.SERVICE_TINYPROXY_ENABLE is defined
         - ansible_env.SERVICE_TINYPROXY_ENABLE == "true"
 
+- name: Configure openstack-client
+  hosts: docker
+  roles:
+    - role: openstack-client
+      become: true
+      when:
+        - ansible_env.SERVICE_OPENSTACK_CLIENT_ENABLE is defined
+        - ansible_env.SERVICE_OPENSTACK_CLIENT_ENABLE == "true"
+
 - name: Configure docker-compose
   hosts: docker
   roles:
