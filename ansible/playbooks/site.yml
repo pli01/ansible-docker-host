@@ -4,9 +4,12 @@
   serial: '{{ serial|default("0") }}'
   gather_facts: false
   tasks:
+    - name: Wait for the the nodes to come up
+      wait_for_connection:
+        timeout: 180
     - name: collect facts
       setup:
-    - name: facts
+    - name: set facts
       set_fact:
         service_ntp_enable: '{{ lookup("env","SERVICE_NTP_ENABLE")| default(False) }}'
         service_rsyslog_enable: '{{ lookup("env","SERVICE_RSYSLOG_ENABLE")| default(False) }}'
