@@ -16,5 +16,7 @@ export ANSIBLE_HOST_KEY_CHECKING=False
 echo "Configuration started"
 time ( cd $(dirname $0)/ansible &&
   ansible-playbook -i config -c ${ANSIBLE_CONNECTION} -l ${ANSIBLE_DEPLOY_LIMIT} \
+     playbooks/site.yml --list-tasks --list-hosts  && \
+  ansible-playbook -i config -c ${ANSIBLE_CONNECTION} -l ${ANSIBLE_DEPLOY_LIMIT} \
      playbooks/site.yml -v
 )
