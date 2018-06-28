@@ -1,54 +1,41 @@
 ---
-- name: Configure ntp
+- name: Gather facts for all hosts
+  hosts: all
+  serial: '{{ serial|default("0") }}'
+  gather_facts: false
+  tasks:
+    - name: collect facts
+      setup:
+    - name: facts
+      set_fact:
+        service_ntp_enable: '{{ lookup("env","SERVICE_NTP_ENABLE")| default(False) }}'
+        service_rsyslog_enable: '{{ lookup("env","SERVICE_RSYSLOG_ENABLE")| default(False) }}'
+        service_tinyproxy_enable: '{{ lookup("env","SERVICE_TINYPROXY_ENABLE")| default(False) }}'
+        service_openstack_client_enable: '{{ lookup("env","SERVICE_OPENSTACK_CLIENT_ENABLE")| default(False) }}'
+        service_docker_compose_enable: '{{ lookup("env","SERVICE_DOCKER_COMPOSE_ENABLE")| default(False) }}'
+        service_docker_enable: '{{ lookup("env","SERVICE_DOCKER_ENABLE")| default(False) }}'
+  tags: always
+
+- name: Configure docker hosts
   hosts: docker
+  gather_facts: false
+  serial: '{{ serial|default("0") }}'
+  become: true
   roles:
     - role: ntp
-      become: true
-      when:
-        - ansible_env.SERVICE_NTP_ENABLE is defined
-        - ansible_env.SERVICE_NTP_ENABLE == "true"
+      when: service_ntp_enable
 
-- name: Configure rsyslog
-  hosts: docker
-  roles:
     - role: rsyslog
-      become: true
-      when:
-        - ansible_env.SERVICE_RSYSLOG_ENABLE is defined
-        - ansible_env.SERVICE_RSYSLOG_ENABLE == "true"
+      when: service_rsyslog_enable
 
-- name: Configure tinyproxy
-  hosts: docker
-  roles:
     - role: tinyproxy
-      become: true
-      when:
-        - ansible_env.SERVICE_TINYPROXY_ENABLE is defined
-        - ansible_env.SERVICE_TINYPROXY_ENABLE == "true"
+      when: service_tinyproxy_enable
 
-- name: Configure openstack-client
-  hosts: docker
-  roles:
     - role: openstack-client
-      become: true
-      when:
-        - ansible_env.SERVICE_OPENSTACK_CLIENT_ENABLE is defined
-        - ansible_env.SERVICE_OPENSTACK_CLIENT_ENABLE == "true"
+      when: service_openstack_client_enable
 
-- name: Configure docker-compose
-  hosts: docker
-  roles:
     - role: docker-compose
-      become: true
-      when:
-        - ansible_env.SERVICE_DOCKER_COMPOSE_ENABLE is defined
-        - ansible_env.SERVICE_DOCKER_COMPOSE_ENABLE == "true"
+      when: service_docker_compose_enable
 
-- name: Configure docker
-  hosts: docker
-  roles:
     - role: docker
-      become: true
-      when:
-        - ansible_env.SERVICE_DOCKER_ENABLE is defined
-        - ansible_env.SERVICE_DOCKER_ENABLE == "true"
+      when: service_docker_enable
