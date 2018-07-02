@@ -65,6 +65,9 @@
   gather_facts: false
   serial: '{{ serial|default("0") }}'
   become: true
+  tasks:
+    - name: debug var
+      debug: var=proxy_env
   roles:
     - role: ntp
       when: service_ntp_enable
