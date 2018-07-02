@@ -24,7 +24,7 @@
       when: ansible_connection_is_local != "local"
 
 - name: Wait for all hosts configured
-  hosts: all
+  hosts: all:!bastion
   serial: '{{ serial|default("0") }}'
   gather_facts: false
   tasks:
