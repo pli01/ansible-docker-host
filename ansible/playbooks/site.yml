@@ -21,7 +21,20 @@
       delay: 1  # Check every 1 seconds. Adjust as you like.
       retries: 120  # Retry up to 120 times. Adjust as needed.
       failed_when: port_check | failed
-      when: ansible_connection_is_local == "smart"
+      when: ansible_connection_is_local != "local"
+
+    - name: 'Wait until the string "FINISH: INSTANCE CONFIGURED" is in /var/log/cloud-init-output.log'
+      wait_for:
+        path: /var/log/cloud-init-output.log
+        search_regex: "^FINISH: INSTANCE CONFIGURED$"
+      delegate_to: localhost
+      with_items: "{{ groups['all'] }}"
+      register: port_check
+      until: port_check|success
+      delay: 1  # Check every 1 seconds. Adjust as you like.
+      retries: 120  # Retry up to 120 times. Adjust as needed.
+      failed_when: port_check | failed
+      when: ansible_connection_is_local != "local"
 
 - name: Gather facts for all hosts
   hosts: all
