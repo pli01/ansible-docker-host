@@ -28,6 +28,10 @@
   serial: '{{ serial|default("0") }}'
   gather_facts: false
   tasks:
+    - name: facts
+      set_fact:
+        ansible_connection_is_local: '{{ lookup("env","ANSIBLE_CONNECTION")| default(local) }}'
+
     - name: 'Wait until the string "FINISH: INSTANCE CONFIGURED" is in /var/log/cloud-init-output.log'
       wait_for:
         path: /var/log/cloud-init-output.log
