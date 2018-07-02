@@ -12,6 +12,7 @@ export ANSIBLE_DEPLOY_LIMIT=${ANSIBLE_DEPLOY_LIMIT:-$(hostname -s)}
 # use connection smart for ssh or local
 export ANSIBLE_CONNECTION=${ANSIBLE_CONNECTION:-local}
 export ANSIBLE_HOST_KEY_CHECKING=False
+export ANSIBLE_BECOME_FLAGS="-E -H -S -n"
 
 echo "Configuration started"
 time ( cd $(dirname $0)/ansible &&
