@@ -69,12 +69,30 @@
     - role: ntp
       when: service_ntp_enable
 
+- name: Configure syslog hosts
+  hosts: syslog
+  gather_facts: false
+  serial: '{{ serial|default("0") }}'
+  become: true
+  roles:
     - role: rsyslog
       when: service_rsyslog_enable
 
+- name: Configure http-proxy hosts
+  hosts: http-proxy
+  gather_facts: false
+  serial: '{{ serial|default("0") }}'
+  become: true
+  roles:
     - role: tinyproxy
       when: service_tinyproxy_enable
 
+- name: Configure docker hosts
+  hosts: docker
+  gather_facts: false
+  serial: '{{ serial|default("0") }}'
+  become: true
+  roles:
     - role: openstack-client
       when: service_openstack_client_enable
 
