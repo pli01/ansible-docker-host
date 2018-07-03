@@ -95,6 +95,12 @@
   gather_facts: false
   serial: '{{ serial|default("0") }}'
   become: true
+  pre_tasks:
+    - name: Stop nscld/nscd, if running
+      service:
+        name: "{{ item }}"
+        state: stopped
+      with_items: [ "nslcd", "nscd" ]
   roles:
     - role: openstack-client
       when: service_openstack_client_enable
@@ -104,3 +110,9 @@
 
     - role: docker
       when: service_docker_enable
+  post_tasks:
+    - name: Start nscld/nscd
+      service:
+        name: "{{ item }}"
+        state: started
+      with_items: [ "nslcd", "nscd" ]
