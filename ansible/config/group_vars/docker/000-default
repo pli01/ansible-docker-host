@@ -19,6 +19,9 @@ proxy_env:
   https_proxy: '{{ lookup("env","https_proxy")  | default(None)}}'
   no_proxy: '{{ lookup("env","no_proxy") | default(None) }}'
 
+packages_pre_req:
+  - "curl"
+  - "jq"
 # Custo
 #docker_apt_key_url: http://nexus/nexus/repository/docker-project/linux/{{ansible_os_family|lower}}/gpg
 #docker_apt_repo_url: "deb [arch=amd64] http://nexus/nexus/repository/docker-project/linux/{{ansible_os_family|lower}} {{ ansible_distribution_release }} stable"

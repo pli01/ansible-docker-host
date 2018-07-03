@@ -101,6 +101,12 @@
         name: "{{ item }}"
         state: stopped
       with_items: [ "nslcd", "nscd" ]
+    - name: Install packages prereq
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ packages_pre_req }}"
+      environment: "{{ proxy_env | default(omit) }}"
   roles:
     - role: openstack-client
       when: service_openstack_client_enable
