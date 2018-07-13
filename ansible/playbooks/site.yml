@@ -54,6 +54,7 @@
       set_fact:
         service_ntp_enable: '{{ lookup("env","SERVICE_NTP_ENABLE")| default(False) }}'
         service_rsyslog_enable: '{{ lookup("env","SERVICE_RSYSLOG_ENABLE")| default(False) }}'
+        service_logrotate_enable: '{{ lookup("env","SERVICE_LOGROTATE_ENABLE")| default(False) }}'
         service_tinyproxy_enable: '{{ lookup("env","SERVICE_TINYPROXY_ENABLE")| default(False) }}'
         service_openstack_client_enable: '{{ lookup("env","SERVICE_OPENSTACK_CLIENT_ENABLE")| default(False) }}'
         service_docker_compose_enable: '{{ lookup("env","SERVICE_DOCKER_COMPOSE_ENABLE")| default(False) }}'
@@ -80,6 +81,8 @@
   roles:
     - role: rsyslog
       when: service_rsyslog_enable
+    - role: logrotate
+      when: service_logrotate_enable
 
 - name: Configure http-proxy hosts
   hosts: http-proxy

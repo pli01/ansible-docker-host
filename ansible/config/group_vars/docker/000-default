@@ -45,6 +45,7 @@ packages_pre_req:
 #  - deploy-user
 #
 ### tinyproxy
+#
 #tinyproxy_no_upstream:
 #  - ".internal.example.com"
 #  - "www.example.com"
@@ -53,4 +54,48 @@ packages_pre_req:
 #  - 'firewall.internal.example.com:80'
 #tinyproxy_header:
 #  - { name: "Proxy-Authorization", value: "Basic 0tsp98==" }
-
+#
+### logrotate
+#
+#logrotate_conf_files:
+#  syslog:
+#    state: present
+#    path:
+#      - /var/log/syslog
+#    options:
+#      - rotate 7
+#      - hourly
+#      - size 10M
+#      - missingok
+#      - notifempty
+#      - compress
+#      - delaycompress
+#    scripts:
+#      postrotate: invoke-rc.d rsyslog rotate > /dev/null
+#  rsyslog:
+#    state: present
+#    path:
+#      - /var/log/mail.info
+#      - /var/log/mail.warn
+#      - /var/log/mail.err
+#      - /var/log/mail.log
+#      - /var/log/daemon.log
+#      - /var/log/kern.log
+#      - /var/log/auth.log
+#      - /var/log/user.log
+#      - /var/log/lpr.log
+#      - /var/log/cron.log
+#      - /var/log/debug
+#      - /var/log/messages
+#    options:
+#      - rotate 4
+#      - hourly
+#      - size 10M
+#      - missingok
+#      - notifempty
+#      - compress
+#      - delaycompress
+#      - sharedscripts
+#    scripts:
+#      postrotate: invoke-rc.d rsyslog rotate > /dev/null
+#

@@ -10,6 +10,9 @@
   name: docker
 - src: https://github.com/pli01/ansible-role-openstack-client/archive/master.tar.gz
   name: openstack-client
+- src: https://github.com/pli01/ansible-role-logrotate/archive/master.tar.gz
+  name: logrotate
+
 
 #- src: https://github.com/pli01/ansible-role-ntp
 #  version: master
@@ -26,3 +29,6 @@
 #- src: https://github.com/pli01/ansible-role-openstack-client
 #  version: master
 #  name: openstack-client
+#- src: https://github.com/pli01/ansible-role-logrotate
+#  version: master
+#  name: logrotate
