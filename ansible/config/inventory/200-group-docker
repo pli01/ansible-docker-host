@@ -1,2 +1,15 @@
 #[docker]
 #localhost ansible_connection=local
+#[bastion]
+#bastion-[0:0]
+#[docker]
+#front-node-[0:0]
+#back-node-[0:3]
+#[http-proxy]
+#front-node-0
+#[syslog]
+#bastion-[0:0]
+#front-node-[0:0]
+#back-node-[0:3]
+#[syslog-host]
+#back-node-[3:3]
